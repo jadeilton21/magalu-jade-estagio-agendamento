@@ -1,6 +1,6 @@
 # 📅 Sistema de Agendamentos - Teste de Estágio Magalu
 
-Este projeto foi desenvolvido como parte de um **teste de estágio para o Magazine Luiza (Magalu)**. Ele consiste em uma API REST simples utilizando **Java com Spring Boot**, com funcionalidades básicas para **agendar, buscar e deletar** compromissos.
+Este projeto foi desenvolvido como parte de um **teste de estágio para o Magazine Luiza (Magalu)**. Ele consiste em uma API REST utilizando **Java com Spring Boot**, com funcionalidades básicas para **agendar compromissos, consultar por ID e excluir agendamentos**, persistindo os dados em um banco **PostgreSQL**.
 
 ---
 
@@ -10,37 +10,26 @@ Este projeto foi desenvolvido como parte de um **teste de estágio para o Magazi
 - Spring Boot 3.x
 - Spring Web
 - Spring Data JPA
-- H2 Database (banco de dados em memória para testes)
+- PostgreSQL
 - Maven
 
 ---
 
 ## 📌 Funcionalidades da API
 
-| Método | Endpoint        | Descrição                                |
-|--------|------------------|--------------------------------------------|
-| POST   | `/agendamentos`  | Cria um novo agendamento                   |
-| GET    | `/agendamentos/{id}` | Busca um agendamento pelo ID             |
-| DELETE | `/agendamentos/{id}` | Deleta um agendamento pelo ID            |
-
-
-
-
-
-src/
-└── main/
-    ├── java/
-    │   └── com.example.agendamento/
-    │       ├── controller/
-    │       ├── service/
-    │       ├── model/
-    │       └── repository/
-    └── resources/
-        ├── application.properties
-        └── data.sql (opcional para testes)
+| Método | Endpoint            | Descrição                                |
+|--------|----------------------|--------------------------------------------|
+| POST   | `/agendamentos`      | Cria um novo agendamento                   |
+| GET    | `/agendamentos/{id}` | Busca um agendamento pelo ID               |
+| DELETE | `/agendamentos/{id}` | Deleta um agendamento pelo ID              |
 
 ---
 
+## 🧪 Como Executar o Projeto
 
+### 1. Configure o Banco de Dados PostgreSQL
 
+Crie um banco de dados no PostgreSQL, por exemplo:
 
+```sql
+CREATE DATABASE agendamentos;
