@@ -23,7 +23,7 @@ Este projeto foi desenvolvido como parte de um **teste de estágio para o Magazi
 | GET    | `/agendamentos/{id}` | Busca um agendamento pelo ID             |
 | DELETE | `/agendamentos/{id}` | Deleta um agendamento pelo ID            |
 
----
+
 
 
 
@@ -38,3 +38,9 @@ src/
     └── resources/
         ├── application.properties
         └── data.sql (opcional para testes)
+
+---
+
+
+
+
