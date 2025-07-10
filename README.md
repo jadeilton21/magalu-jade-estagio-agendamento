@@ -24,3 +24,17 @@ Este projeto foi desenvolvido como parte de um **teste de estágio para o Magazi
 | DELETE | `/agendamentos/{id}` | Deleta um agendamento pelo ID            |
 
 ---
+
+
+
+src/
+└── main/
+    ├── java/
+    │   └── com.example.agendamento/
+    │       ├── controller/
+    │       ├── service/
+    │       ├── model/
+    │       └── repository/
+    └── resources/
+        ├── application.properties
+        └── data.sql (opcional para testes)
