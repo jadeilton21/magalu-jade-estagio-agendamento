@@ -33,7 +33,7 @@ public class AgendamentoController {
     }
 
 
-    @DeleteMapping("/agendamentos/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> remover(@PathVariable Long id) {
         agendamentoService.remover(id);
         return ResponseEntity.noContent().build();

@@ -116,7 +116,7 @@ public class AgendamentoControllerTest {
         doNothing().when(service).remover(id);
 
 
-        mockMvc.perform(delete("/agendamentos/{id}",id))
+        mockMvc.perform(delete("/api/agendamentos/{id}",id))
                 .andExpect(status().isOk());
     }
 
