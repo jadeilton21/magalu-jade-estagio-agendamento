@@ -2,17 +2,27 @@ package com.example.magalu_jade;
 
 
 import com.example.magalu_jade.controller.AgendamentoController;
+import com.example.magalu_jade.dtos.AgendamentoReponseDTO;
 import com.example.magalu_jade.dtos.AgendamentoRequestDTO;
+import com.example.magalu_jade.enuns.StatusAgendamento;
 import com.example.magalu_jade.enuns.TipoComunicacao;
+import com.example.magalu_jade.model.Agendamento;
 import com.example.magalu_jade.service.AgendamentoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import static org.mockito.Mockito.when;
 
 @WebMvcTest(AgendamentoController.class)
 public class AgendamentoControllerTest {
@@ -41,11 +51,33 @@ public class AgendamentoControllerTest {
 
         AgendamentoRequestDTO requestDTO = new AgendamentoRequestDTO(
                 "jadeiltondm@gmail.com",
-                "Eu te amo",
+                "Mensagem de envio",
                 TipoComunicacao.EMAIL,
                 LocalDateTime.now().plusMinutes(1)
         );
-        
+
+
+        AgendamentoReponseDTO reponseDTO = new AgendamentoReponseDTO(
+          1L,
+                requestDTO.destinatario(),
+                requestDTO.mensagem(),
+                requestDTO.tipoComunicacao(),
+                requestDTO.dataHoraEnvio(),
+                StatusAgendamento.AGENDADO,
+                LocalDateTime.now()
+
+        );
+
+
+        when(service.agendar(any())).thenReturn(reponseDTO);
+
+        mockMvc.perform(post("/api/agendamento")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(requestDTO)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(1))
+                .andExpect(jsonPath("$.destinatario").value("jadeiltondm@gmail.com"));
+
 
     }
 
