@@ -25,7 +25,7 @@ public class AgendamentoController {
 
         return ResponseEntity.ok(response);
     }
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<AgendamentoReponseDTO> buscarPorId(@PathVariable Long id) {
 
         AgendamentoReponseDTO  response = agendamentoService.buscarPorId(id);
@@ -33,10 +33,10 @@ public class AgendamentoController {
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/agendamentos/{id}")
     public ResponseEntity<?> remover(@PathVariable Long id) {
         agendamentoService.remover(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
 }
